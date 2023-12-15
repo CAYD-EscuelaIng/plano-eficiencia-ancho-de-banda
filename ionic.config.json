@@ -1,0 +1,7 @@
+{
+  "name": "plano-eficiencia-ancho-de-banda",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
