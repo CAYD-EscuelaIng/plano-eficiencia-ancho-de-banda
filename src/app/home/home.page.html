@@ -17,23 +17,34 @@
             </ion-card-title>
           </ion-card-header>
           <ion-card-content class="ion-margin">
-            <p class="ion-margin">
-              Representación gráfica del plano de eficiencia de ancho de banda,
-              el cual permite establecer una frontera entre los sistemas que
-              pueden transmitir información de una manera confiable y los que no
-              pueden garantizar esta tarea.
-            </p>
-            <div class="ion-margin">
-              <!-- El elemento canvas permite renderizar en pantalla la 
-              información de la gráfica -->
-              <canvas
-                baseChart
-                [type]="'scatter'"
-                [data]="lineChartData"
-                [options]="lineChartOptions"
-              >
-              </canvas>
-            </div>
+            <ion-row>
+              <ion-col>
+                <p class="ion-margin">
+                  Representación gráfica del plano de eficiencia de ancho de
+                  banda, el cual permite establecer una frontera entre los
+                  sistemas que pueden transmitir información de una manera
+                  confiable y los que no pueden garantizar esta tarea.
+                </p>
+              </ion-col>
+              <ion-col>
+                <ion-img src="..\assets\imagen.jpg" class="imagen"> </ion-img>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <div class="ion-margin">
+                  <!-- El elemento canvas permite renderizar en pantalla la 
+                  información de la gráfica -->
+                  <canvas
+                    baseChart
+                    [type]="'scatter'"
+                    [data]="lineChartData"
+                    [options]="lineChartOptions"
+                  >
+                  </canvas>
+                </div>
+              </ion-col>
+            </ion-row>
           </ion-card-content>
         </ion-card>
       </ion-col>
