@@ -74,6 +74,9 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** Home cards **/
+  --main-card-box-shadow: 0px 10px 18px -7px rgba(0, 0, 0, 0.75);
 }
 
 @media (prefers-color-scheme: dark) {
