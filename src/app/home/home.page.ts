@@ -21,6 +21,7 @@ export class HomePage implements OnInit {
         backgroundColor: 'rgba(56,128,255,0.3)',
         pointStyle: false,
         showLine: true,
+        tension: 0.5
       },
     ],
   };
