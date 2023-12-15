@@ -11,13 +11,21 @@
     <ion-row>
       <ion-col>
         <ion-card class="main-card">
-          <ion-card-header>
+          <ion-card-header class="ion-margin">
             <ion-card-title>
               Plano de Eficiencia de Ancho de Banda
             </ion-card-title>
           </ion-card-header>
-          <ion-card-content>
-            <div>
+          <ion-card-content class="ion-margin">
+            <p class="ion-margin">
+              Representación gráfica del plano de eficiencia de ancho de banda,
+              el cual permite establecer una frontera entre los sistemas que
+              pueden transmitir información de una manera confiable y los que no
+              pueden garantizar esta tarea.
+            </p>
+            <div class="ion-margin">
+              <!-- El elemento canvas permite renderizar en pantalla la 
+              información de la gráfica -->
               <canvas
                 baseChart
                 [type]="'scatter'"

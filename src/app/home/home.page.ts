@@ -8,24 +8,7 @@ import { ChartConfiguration, ChartOptions, LogarithmicScale } from 'chart.js';
 })
 export class HomePage implements OnInit {
   // Datos numéricos
-  private datos: { x: number; y: number }[] = [
-    // {
-    //   x: -10,
-    //   y: 0,
-    // },
-    // {
-    //   x: 0,
-    //   y: 10,
-    // },
-    // {
-    //   x: 0.5,
-    //   y: 5.5,
-    // },
-    // {
-    //   x: 10,
-    //   y: 5,
-    // },
-  ];
+  private datos: { x: number; y: number }[] = [];
 
   // Información del gráfico
   public lineChartData: ChartConfiguration<'scatter'>['data'] = {
@@ -41,11 +24,27 @@ export class HomePage implements OnInit {
       },
     ],
   };
+
   public lineChartOptions: ChartOptions<'scatter'> = {
     responsive: true,
     scales: {
+      x: {
+        position: { y: 1 },
+        title: {
+          display: true,
+          align: 'end',
+          text: 'Eb/N0 (dB)',
+        },
+        border: { width: 5 },
+      },
       y: {
         type: 'logarithmic',
+        position: { x: 0 },
+        title: {
+          display: true,
+          text: 'R/W (bps/Hz)',
+        },
+        border: { width: 5 },
       },
     },
   };
@@ -53,27 +52,23 @@ export class HomePage implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    // Condiciones iniciales
-    const valorSuperior: number = 16;
-    const valorInferior: number = 1 / 4;
-    const numeroDePuntos: number = 1000;
-    const intervalo: number = (valorSuperior - valorInferior) / numeroDePuntos;
+    // Condiciones iniciales: se establece un rango para la variable R/W, 
+    // ubicada sobre el eje y. Este rango se divide entre el número de puntos 
+    // muestra. Con estos valores se calculará el valor del EbN0 correspondiente.
+    const valorSuperiorEjeY: number = 20;
+    const valorInferiorEjeY: number = 0.2;
+    const numeroDePuntos: number = 99;
+    const intervalo: number =
+      (valorSuperiorEjeY - valorInferiorEjeY) / numeroDePuntos;
 
-    let valoresRW: number[] = [];
-    let valoresEbN0: number[] = [];
-
+    // Se calcula el valor y el resultado se guarda en un vector con las 
+    // posiciones de los ejes X y Y. 
     for (let i = 0; i <= numeroDePuntos; i++) {
-      const valor = valorInferior + intervalo * i;
-      valoresRW.push(valor);
-      valoresEbN0.push(10 * Math.log10((Math.pow(2, valor) - 1) / valor));
+      const valor = valorInferiorEjeY + intervalo * i;
       this.datos.push({
         x: 10 * Math.log10((Math.pow(2, valor) - 1) / valor),
         y: valor,
       });
     }
-
-    // console.table(valoresRW);
-    // console.table(valoresEbN0);
-    // console.table(this.datos);
   }
 }
